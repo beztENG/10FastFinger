@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Hiển thị ký tự từ bàn phím</title>
+    <link rel="stylesheet" href="10Styles.css">
+</head>
+
+<body>
+    <h1>Nhập theo đoạn văn bản</h1>
+    <div id="text-display">
+        <p>Đây là đoạn văn bản mẫu. Bạn hãy nhập vào ô dưới đây theo đoạn văn bản này.</p>
+    </div>
+    <input type="text" id="input-field" onkeyup="checkInput()">
+    <p id="result"></p>
+
+    <script>
+        var originalText = document.getElementById("text-display").innerText.trim();
+        var inputField = document.getElementById("input-field");
+        var result = document.getElementById("result");
+
+        function checkInput() {
+            var userInput = inputField.value.trim();
+            var words = userInput.split(" ");
+            var originalWords = originalText.split(" ");
+
+            var correctCount = 0;
+            for (var i = 0; i < words.length; i++) {
+                if (words[i] === originalWords[i]) {
+                    correctCount++;
+                }
+            }
+
+            var accuracy = (correctCount / originalWords.length) * 100;
+            result.innerText = "Độ chính xác: " + accuracy.toFixed(2) + "%";
+        }
+    </script>
+</body>
+
+</html>
